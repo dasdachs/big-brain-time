@@ -1,0 +1,11 @@
+{
+  "name": "big-brain-time",
+  "version": "1.0.0",
+  "description": "Quiz app with React and Firebase",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["react", "firebase"],
+  "author": "Jani Šumak <jani.sumak@gmail.com>",
+  "license": "MIT"
+}
