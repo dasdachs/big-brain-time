@@ -1,0 +1,11 @@
+# Node
+node_modules
+dist
+
+# Firebase
+firebase.json
+
+# Misc
+.vscode
+.idea
+.DS_Store
