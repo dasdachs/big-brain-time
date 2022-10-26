@@ -46,16 +46,14 @@ if (isProduction) {
 		}),
 		new EnvironmentPlugin({
 			DEBUG: false,
-			PUBLIC_URL: "https://party.inova.si",
+			PUBLIC_URL: "https://big-brain-time-6a3ae.web.app",
 			REACT_APP_API_KEY: JSON.stringify(process.env.REACT_APP_API_KEY),
+			REACT_APP_APP_ID: JSON.stringify(process.env.REACT_APP_APP_ID),
 			REACT_APP_AUTH_DOMAIN: JSON.stringify(process.env.REACT_APP_AUTH_DOMAIN),
-			REACT_APP_DATABASE_URL: JSON.stringify(process.env.REACT_APP_DATABASE_URL),
+			REACT_APP_MEASUREMENT_ID: JSON.stringify(process.env.REACT_APP_MEASUREMENT_ID),
+			REACT_APP_MESSAGING_SENDER_ID: JSON.stringify(process.env.REACT_APP_MESSAGING_SENDER_ID),
 			REACT_APP_PROJECT_ID: JSON.stringify(process.env.REACT_APP_PROJECT_ID),
 			REACT_APP_STORAGE_BUCKET: JSON.stringify(process.env.REACT_APP_STORAGE_BUCKET),
-			REACT_APP_MESSAGING_SENDER_ID: JSON.stringify(process.env.REACT_APP_MESSAGING_SENDER_ID),
-			REACT_APP_APP_ID: JSON.stringify(process.env.REACT_APP_APP_ID),
-			REACT_APP_MEASUREMENT_ID: JSON.stringify(process.env.REACT_APP_MEASUREMENT_ID),
-			REACT_APP_VAPID: JSON.stringify(process.env.REACT_APP_VAPID),
 		}),
 	]
 } else {
