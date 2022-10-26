@@ -1,0 +1,55 @@
+name: Deploy to Firebase
+run-name: ${{ github.actor }} is deploying the app to Firebase Hosting 🔥 (https://big-brain-time-6a3ae.web.app/)
+
+on:
+  push:
+    branches:
+      - production
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    env:
+      REACT_APP_API_KEY: '${{ secrets.REACT_APP_API_KEY }}'
+      REACT_APP_APP_ID: '${{ secrets.REACT_APP_APP_ID }}'
+      REACT_APP_AUTH_DOMAIN: '${{ secrets.REACT_APP_AUTH_DOMAIN }}'
+      REACT_APP_MEASUREMENT_ID: '${{ secrets.REACT_APP_MEASUREMENT_ID }}'
+      REACT_APP_MESSAGING_SENDER_ID: '${{ secrets.REACT_APP_MESSAGING_SENDER_ID }}'
+      REACT_APP_PROJECT_ID: '${{ secrets.REACT_APP_PROJECT_ID }}'
+      REACT_APP_STORAGE_BUCKET: '${{ secrets.REACT_APP_STORAGE_BUCKET }}'
+
+    steps:
+      - run: echo "🎉 The job was triggered by a ${{ github.event_name }} event."
+      - run: echo "🐧 This job is running on a ${{ runner.os }} server hosted by GitHub!"
+
+      - name: Check out repository code
+        uses: actions/checkout@v3
+
+      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+      - run: echo "🔎 The name of the branch is ${{ github.ref }} (${{ github.repository }})."
+
+      - run: echo "🖥️ Installing node.js 16 --lts."
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+
+
+      - run: echo "📦 Installing pnpm@7.12.2 and installing dependencies."
+      - name: Setup pnpm and installing dependencies
+        uses: pnpm/action-setup@v2.2.4
+        with:
+          version: 7.12.2
+          run_install: true
+
+      - run: echo "🏗️ Building ..."
+      - run: pnpm build
+
+      - run: echo "Deploying to Firebase 🚀"
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}'
+          channelId: live
+          projectId: big-brain-time-6a3ae

@@ -1,5 +1,5 @@
 name: Merge to develop checks
-run-name: ${{ github.actor }} is testing out branch before merging 🚀
+run-name: ${{ github.actor }} is running basic checks out branch before merging 🚀
 
 on:
   push:
@@ -10,6 +10,7 @@ on:
 jobs:
   merge-checks:
     runs-on: ubuntu-latest
+
     steps:
       - run: echo "🎉 The job was triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is running on a ${{ runner.os }} server hosted by GitHub!"
@@ -39,6 +40,3 @@ jobs:
 
       - run: echo "🧪️ Testing ..."
       - run: pnpm test
-
-      - run: echo "🏗️ Building ..."
-      - run: pnpm build
