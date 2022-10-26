@@ -1,4 +1,5 @@
 import {useInitFirebaseApp} from "./hooks";
+import {GamesList} from "./pages";
 
 export default function App() {
     const {initializing, error} = useInitFirebaseApp()
@@ -12,7 +13,7 @@ export default function App() {
     }
     return(
         <div>
-            Hello, Big brainz!
+            <GamesList />
         </div>
     )
 }
