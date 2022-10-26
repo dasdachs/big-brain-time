@@ -4,6 +4,7 @@ dist
 
 # Firebase
 firebase.json
+.env
 
 # Misc
 .vscode
