@@ -1,0 +1,44 @@
+name: Merge to develop checks
+run-name: ${{ github.actor }} is testing out branch before merging 🚀
+
+on:
+  push:
+    branches:
+      - develop
+      - production
+
+jobs:
+  merge-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "🎉 The job was triggered by a ${{ github.event_name }} event."
+      - run: echo "🐧 This job is running on a ${{ runner.os }} server hosted by GitHub!"
+
+      - name: Check out repository code
+        uses: actions/checkout@v3
+
+      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+      - run: echo "🔎 The name of the branch is ${{ github.ref }} (${{ github.repository }})."
+
+      - run: echo "🖥️ Installing node.js 16 --lts."
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+
+
+      - run: echo "📦 Installing pnpm@7.12.2 and installing dependencies."
+      - name: Setup pnpm and installing dependencies
+        uses: pnpm/action-setup@v2.2.4
+        with:
+          version: 7.12.2
+          run_install: true
+
+      - run: echo "✍️ Linting ..."
+      - run: pnpm lint
+
+      - run: echo "🧪️ Testing ..."
+      - run: pnpm test
+
+      - run: echo "🏗️ Building ..."
+      - run: pnpm build
