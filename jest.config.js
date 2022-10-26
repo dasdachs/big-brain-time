@@ -1,10 +1,6 @@
-/** @returns {Promise<import('jest').Config>} */
-module.exports = async () => {
-  return {
-    verbose: true,
-	  testEnvironment: "jsdom",
-    transform: {
-      "^.+\\.tsx?$": ["@swc/jest"],
-    },
-  }
+/** @type {import('ts-jest').JestConfigWithTsJest} */
+module.exports = {
+  preset: 'ts-jest',
+  testEnvironment: 'jsdom',
+  resolver: './jest.resolver.js',
 };
