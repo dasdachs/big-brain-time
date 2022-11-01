@@ -1,4 +1,4 @@
-import {useList} from "../hooks/useGames";
+import {useList} from "../hooks";
 
 export function GamesList() {
     const {loading, items, error} = useList<{id: string, data: Record<string, string>}>("games")

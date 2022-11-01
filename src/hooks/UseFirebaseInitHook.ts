@@ -23,8 +23,8 @@ export function useInitFirebaseApp() {
     })
 
     setPersistenceStorage(app)
-        .then(() => setInitializing(false))
         .catch((e) => setError(e as Error))
+        .finally(() => setInitializing(false))
 
     return {error, initializing}
 }
